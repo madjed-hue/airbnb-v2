@@ -2,8 +2,9 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
+import InfoCard from "../components/InfoCard";
 
-const Search = () => {
+const Search = ({ data }) => {
   const router = useRouter();
   const { location, startDate, endDate, noOfGuests } = router.query;
   const rangeDate = `${startDate} - ${endDate}`;
@@ -27,6 +28,18 @@ const Search = () => {
             <p className="button">Rooms and beds</p>
             <p className="button">More filters</p>
           </div>
+          {data?.map((item) => (
+            <InfoCard
+              key={item.img}
+              img={item.img}
+              title={item.title}
+              description={item.description}
+              price={item.price}
+              total={item.total}
+              location={item.location}
+              star={item.star}
+            />
+          ))}
         </section>
       </main>
       <Footer />
@@ -35,3 +48,13 @@ const Search = () => {
 };
 
 export default Search;
+
+export async function getServerSideProps(context) {
+  const searResult = await fetch("https://www.jsonkeeper.com/b/5NPS");
+  const data = await searResult.json();
+  return {
+    props: {
+      data,
+    }, // will be passed to the page component as props
+  };
+}
