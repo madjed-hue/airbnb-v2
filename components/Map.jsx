@@ -39,6 +39,7 @@ const MapGl = ({ data }) => {
               onClick={() => setSelectedLocation(result)}
               className="cursor-pointer text-2xl animate-bounce"
               aria-label="push-pin"
+              anchor="top"
             >
               📌
             </p>
