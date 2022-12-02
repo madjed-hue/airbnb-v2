@@ -37,7 +37,7 @@ const MapGl = ({ data }) => {
             <p
               role="img"
               onClick={() => setSelectedLocation(result)}
-              className="cursor-pointer text-2xl "
+              className="cursor-pointer text-2xl animate-bounce"
               aria-label="push-pin"
             >
               📌
@@ -49,7 +49,7 @@ const MapGl = ({ data }) => {
               onClose={handleClose}
               longitude={result.long}
               latitude={result.lat}
-              anchor="top"
+              anchor="bottom"
             >
               {result.title}
             </Popup>
