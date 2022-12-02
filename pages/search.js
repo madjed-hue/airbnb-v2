@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import InfoCard from "../components/InfoCard";
+import Map from "../components/Map";
 
 const Search = ({ data }) => {
   const router = useRouter();
@@ -41,6 +42,9 @@ const Search = ({ data }) => {
             />
           ))}
         </section>
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+          <Map data={data} />
+        </section>
       </main>
       <Footer />
     </div>
@@ -49,7 +53,7 @@ const Search = ({ data }) => {
 
 export default Search;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const searResult = await fetch("https://www.jsonkeeper.com/b/5NPS");
   const data = await searResult.json();
   return {

@@ -9,6 +9,10 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    mapbox_key:
+      "pk.eyJ1IjoibWFkamVkIiwiYSI6ImNsM2xuZDlmajAyaWIzYnBobm5tczZwdjMifQ.e2oipmXrBPo5GB-viD-b-Q",
+  },
 };
 
 module.exports = nextConfig;
